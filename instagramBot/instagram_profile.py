@@ -45,13 +45,13 @@ class InstagramProfile:
         try:
             self.wait.until(lambda elem: elem.find_element(By.CSS_SELECTOR, 'p[class="gxNyb"]'))
         except exceptions.TimeoutException:
-            print("Timeout: Update email")
+            print("[!] Timeout: Update email")
             return False
         else:
             bottom_notif = self.driver.find_element(By.CSS_SELECTOR, 'p[class="gxNyb"]')
 
             if "profile saved" in str(bottom_notif.text.lower()):
-                print("Email updated successfully")
+                print("[x] Email updated successfully")
                 return True
             else:
                 print(F"Error: {bottom_notif.text}")
@@ -80,16 +80,16 @@ class InstagramProfile:
         try:
             self.wait.until(lambda elem: elem.find_element(By.CSS_SELECTOR, 'p[class="gxNyb"]'))
         except exceptions.TimeoutException:
-            print("Timeout: Update phone")
+            print("[!] Timeout: Update phone")
             return False
         else:
             bottom_notif = self.driver.find_element(By.CSS_SELECTOR, 'p[class="gxNyb"]')
 
             if "profile saved" in str(bottom_notif.text.lower()):
-                print("Phone updated successfully")
+                print("[x] Phone updated successfully")
                 return True
             else:
-                print(F"Error: {bottom_notif.text}")
+                print(F"[!] Error: {bottom_notif.text}")
                 return False
 
 
@@ -112,16 +112,16 @@ class InstagramProfile:
         try:
             self.wait.until(lambda elem: elem.find_element(By.CSS_SELECTOR, 'p[class="gxNyb"]'))
         except exceptions.TimeoutException:
-            print("Timeout: Update username")
+            print("[!] Timeout: Update username")
             return False
         else:
             bottom_notif = self.driver.find_element(By.CSS_SELECTOR, 'p[class="gxNyb"]')
 
             if "profile saved" in str(bottom_notif.text.lower()):
-                print("Username updated successfully")
+                print("[x] Username updated successfully")
                 return True
             else:
-                print(F"Error: {bottom_notif.text}")
+                print(F"[!] Error: {bottom_notif.text}")
                 return False
 
 
@@ -144,16 +144,16 @@ class InstagramProfile:
         try:
             self.wait.until(lambda elem: elem.find_element(By.CSS_SELECTOR, 'p[class="gxNyb"]'))
         except exceptions.TimeoutException:
-            print("Timeout: Update name")
+            print("[!] Timeout: Update name")
             return False
         else:
             bottom_notif = self.driver.find_element(By.CSS_SELECTOR, 'p[class="gxNyb"]')
 
             if "profile saved" in str(bottom_notif.text.lower()):
-                print("name updated successfully")
+                print("[x] name updated successfully")
                 return True
             else:
-                print(F"Error: {bottom_notif.text}")
+                print(F"[!] Error: {bottom_notif.text}")
                 return False
 
 
@@ -174,16 +174,16 @@ class InstagramProfile:
         try:
             self.wait.until(lambda elem: elem.find_element(By.CSS_SELECTOR, 'p[class="gxNyb"]'))
         except exceptions.TimeoutException:
-            print("Timeout: Update website")
+            print("[!] Timeout: Update website")
             return False
         else:
             bottom_notif = self.driver.find_element(By.CSS_SELECTOR, 'p[class="gxNyb"]')
 
             if "profile saved" in str(bottom_notif.text.lower()):
-                print("Website updated successfully")
+                print("[x] Website updated successfully")
                 return True
             else:
-                print(F"Error: {bottom_notif.text}")
+                print(F"[!] Error: {bottom_notif.text}")
                 return False
 
 
@@ -204,16 +204,16 @@ class InstagramProfile:
         try:
             self.wait.until(lambda elem: elem.find_element(By.CSS_SELECTOR, 'p[class="gxNyb"]'))
         except exceptions.TimeoutException:
-            print("Timeout: Update bio")
+            print("[!] Timeout: Update bio")
             return False
         else:
             bottom_notif = self.driver.find_element(By.CSS_SELECTOR, 'p[class="gxNyb"]')
 
             if "profile saved" in str(bottom_notif.text.lower()):
-                print("Bio updated successfully")
+                print("[x] Bio updated successfully")
                 return True
             else:
-                print(F"Error: {bottom_notif.text}")
+                print(F"[!] Error: {bottom_notif.text}")
                 return False
 
 
@@ -235,16 +235,16 @@ class InstagramProfile:
         try:  # wait for bottom notification bar to show up
             self.wait.until(lambda elem: elem.find_element(By.CSS_SELECTOR, 'p[class="gxNyb"]'))
         except exceptions.TimeoutException:
-            print("Timeout: change password")
+            print("[!] Timeout: change password")
             return False
         else:
             bottom_notif = self.driver.find_element(By.CSS_SELECTOR, 'p[class="gxNyb"')
 
             if "password changed" in str(bottom_notif.text.lower()):
-                print("Password changed: True")
+                print("[x] Password changed successfully")
                 return True
             else:
-                print(F"Error: {bottom_notif.text}")
+                print(F"[!] Error: {bottom_notif.text}")
                 return False
 
     
@@ -258,7 +258,7 @@ class InstagramProfile:
         try:
             self.wait.until(lambda elem: elem.find_elements(By.CSS_SELECTOR, 'input[class="tlZCJ"]'))
         except exceptions.TimeoutException:
-            print("Timeout: Disable 2fa")
+            print("[!] Timeout: Disable 2fa")
         else:
             twofa_elems = self.driver.find_elements(By.CSS_SELECTOR, 'input[class="tlZCJ"]')
 
@@ -274,7 +274,7 @@ class InstagramProfile:
                     try:  # wait for bottom notification bar to show up
                         self.wait.until(lambda elem: elem.find_element(By.CSS_SELECTOR, 'p[class="gxNyb"]'))
                     except exceptions.TimeoutException:
-                        print("Timeout: Disable 2fa > turn off")
+                        print("[!] Timeout: Disable 2fa > turn off")
                     else:
                         bottom_notif = self.driver.find_element(By.CSS_SELECTOR, 'p[class="gxNyb"')
 
@@ -298,7 +298,7 @@ class InstagramProfile:
         try:    
             self.wait.until(lambda elem: elem.find_elements(By.CSS_SELECTOR, 'input[class="tlZCJ"]'))
         except exceptions.TimeoutException:
-            print("Timeout: enable twofa")
+            print("[!] Timeout: enable twofa")
         else:
             sms_twofa_label = self.driver.find_element(By.CSS_SELECTOR, 'label[class="U17kh PLphk "]')
             sms_twofa_checkbox = self.driver.find_element(By.CSS_SELECTOR, F'input[id="{sms_twofa_label.get_attribute("for")}"]')
@@ -318,13 +318,13 @@ class InstagramProfile:
                 try:
                     self.wait.until(lambda elem: elem.find_element(By.CSS_SELECTOR, 'input[name="confirmationCode"]'))
                 except exceptions.TimeoutException:
-                    print("Timeout: enable twofa > code input")
+                    print("[!] Timeout: enable twofa > code input")
                 else:
                     code_field = self.driver.find_element(By.CSS_SELECTOR, 'input[name="confirmationCode"]')
                     done_btn = self.driver.find_element(By.CSS_SELECTOR, 'button[class="sqdOP  L3NKy   y3zKF     "]')
                     
                     while True:
-                        code_field.send_keys(input("Enter code: "))
+                        code_field.send_keys(input("[+] Confirmation code: "))
                         sleep(1)
                         done_btn.click()
 
@@ -332,7 +332,7 @@ class InstagramProfile:
                             self.wait.until(lambda elem: elem.find_element(By.CSS_SELECTOR, 'div[class="ToanC XjicZ"]'))
                         except exceptions.TimeoutException:
                             code_field.clear()
-                            print("Timeout: enable twofa > verify code")
+                            print("[!] Timeout: enable twofa > verify code")
                         else:
                             bottom_notif = self.driver.find_element(By.CSS_SELECTOR, 'div[class="ToanC XjicZ"]')
 
@@ -361,7 +361,7 @@ class InstagramProfile:
         try: # is backup code visible
             self.wait.until(lambda elem: elem.find_element(By.CSS_SELECTOR, 'article[class="PVkFi"] > div[class="_8hLoy"] > ul[class="U3GhF"]'))
         except exceptions.TimeoutException:
-            print("Timeout: get backup code > code")
+            print("[!] Timeout: get backup code > code")
         else:
             sleep(2)
             code_elem = self.driver.find_element(By.CSS_SELECTOR, 'article[class="PVkFi"] > div[class="_8hLoy"] > ul[class="U3GhF"]')
