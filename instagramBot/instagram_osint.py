@@ -1,12 +1,11 @@
-import json
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.common import exceptions
-from instagramBot import settings
-from tabulate import tabulate
 from typing import Union
 from time import sleep
+from . import settings
+import json
 
 
 class InstagramOSINT:
