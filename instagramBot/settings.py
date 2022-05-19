@@ -10,12 +10,8 @@ import json
 # Webdriver path is a flexible option to change location of drivers without having
 # to update your code, and will work on multiple machines without requiring that
 # each machine put the drivers in the same place. This used the "PATH" directory.
-DRIVER_PATH = ":/etc/seleniumDrivers/" # Linux
-
-# This varaible is used globally, so please username/password should be provided
-# as an obkect to LOGIN
-# LOGIN = {"username": "your-username", "passsword": "your-password"}
-LOGIN = json.load(open("config.json", "r"))
+# you can add your specific web driver version in the driver folder.
+DRIVER_PATH = ":drivers/" # Linux
 
 
 # Instagram Urls

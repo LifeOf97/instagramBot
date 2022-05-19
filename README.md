@@ -91,7 +91,7 @@ this should be the same instance that opens your web browser.
   - `open_url()`. Loads instagram url from gotten from `settings.py` file.
 
 - `InstagramLogin()`. Takes the bot instance as argument.
-  - `login_via_cookies()`. Takes no argument.
+  - `login_via_cookies()`. Takes 1 argument `username`.
   - `login_via_login()`. Takes 3 arguments, `username`, `password` and `save_login`.
 
 - `InstagramProfile()`. Takes the bot instance as argument.
@@ -104,7 +104,7 @@ this should be the same instance that opens your web browser.
   - `change_password()`. Takes 3 arguments `old_password`, `new_password`, `confirm_password`.
   - `disable_twofa()`. Take no argument.
   - `enable_sms_twofa()`. Takes 1 argument `phone`.
-  - `get_backup_code()`. Take no argument.
+  - `get_backup_code()`. Take 1 argument `username`.
 
 - `InstagramOSINT()`. Takes the bot instance as argument.
   - `get_target_info()`. Takes 1 argument `save`.
