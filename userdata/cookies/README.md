@@ -1,0 +1,1 @@
+This folder holds the cookies for all instagram account authenticated in a per *username.json* file.
