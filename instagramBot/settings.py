@@ -3,7 +3,8 @@
 # https://www.selenium.dev/documentation/webdriver/getting_started/install_drivers/
 # to install drivers for any specific browser supported by selenium.
 
-from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.options import Options as ChromeOptions
+from selenium.webdriver.firefox.options import Options as FirefoxOptions
 import json
 
 
@@ -32,7 +33,13 @@ MOBILE_EMULATION = {
     "userAgent": UA_ANDROID
 }
 
-# Chrome driver options. visit: https://chromedriver.chromium.org/ for better understanding
-CHROME_OPTIONS = Options()
-# CHROME_OPTIONS.add_argument("--headless")
+
+# Chrome driver options.
+# visit: https://chromedriver.chromium.org/ for better understanding
+CHROME_OPTIONS = ChromeOptions()
+CHROME_OPTIONS.add_argument("--headless")
 # CHROME_OPTIONS.add_argument("--window-size=1600,900")
+
+# Firefox driver options
+FIREFOX_OPTIONS = FirefoxOptions()
+FIREFOX_OPTIONS.add_argument("--headless")

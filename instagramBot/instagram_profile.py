@@ -24,6 +24,32 @@ class InstagramProfile:
     def __navigate_to_twofa(self):
         self.driver.get(settings.TWOFA_URL)
 
+    
+    def __input_otp(self, otp: str=None) -> bool:
+        code_field = self.driver.find_element(By.CSS_SELECTOR, 'input[name="confirmationCode"]')
+        done_btn = self.driver.find_element(By.CSS_SELECTOR, 'button[class="sqdOP  L3NKy   y3zKF     "]')
+        
+        code_field.send_keys(input("[+] Confirmation code: "))
+        sleep(1)
+        done_btn.click()
+
+        try: # wait for bottom notification bar to show up
+            self.wait.until(lambda elem: elem.find_element(By.CSS_SELECTOR, 'div[class="ToanC XjicZ"]'))
+        except exceptions.TimeoutException:
+            code_field.clear()
+            print("[!] Timeout: enable twofa > verify code")
+            return False
+        else:
+            bottom_notif = self.driver.find_element(By.CSS_SELECTOR, 'div[class="ToanC XjicZ"]')
+
+            if "settings saved" in str(bottom_notif.text.lower()):
+                print(F"[x] {bottom_notif.text}")
+                return True
+            else:
+                code_field.clear()
+                print(bottom_notif.text)
+                return False
+
 
     def update_profile_email(self, email: str=None) -> bool:
         """
@@ -320,28 +346,11 @@ class InstagramProfile:
                 except exceptions.TimeoutException:
                     print("[!] Timeout: enable twofa > code input")
                 else:
-                    code_field = self.driver.find_element(By.CSS_SELECTOR, 'input[name="confirmationCode"]')
-                    done_btn = self.driver.find_element(By.CSS_SELECTOR, 'button[class="sqdOP  L3NKy   y3zKF     "]')
-                    
                     while True:
-                        code_field.send_keys(input("[+] Confirmation code: "))
-                        sleep(1)
-                        done_btn.click()
+                        otp = self.__input_otp()
 
-                        try: # wait for bottom notification bar to show up
-                            self.wait.until(lambda elem: elem.find_element(By.CSS_SELECTOR, 'div[class="ToanC XjicZ"]'))
-                        except exceptions.TimeoutException:
-                            code_field.clear()
-                            print("[!] Timeout: enable twofa > verify code")
-                        else:
-                            bottom_notif = self.driver.find_element(By.CSS_SELECTOR, 'div[class="ToanC XjicZ"]')
-
-                            if "settings saved" in str(bottom_notif.text.lower()):
-                                print(bottom_notif.text)
-                                break
-                            else:
-                                code_field.clear()
-                                print(bottom_notif.text)
+                        if otp:
+                            break
            
             else:
                 raise Exception("Text message twofa already enabled")

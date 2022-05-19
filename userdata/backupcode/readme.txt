@@ -1,0 +1,1 @@
+This folder holds the backup codes for all instagram account authenticated in a per user txt file.

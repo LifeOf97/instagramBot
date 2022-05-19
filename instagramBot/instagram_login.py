@@ -34,7 +34,7 @@ class InstagramLogin:
             sleep(1)
 
 
-    def __input_twofa_otp(self, otp: str=None) -> bool:
+    def __input_otp(self, otp: str=None) -> bool:
         self.wait.until(lambda elem: elem.find_element(By.CSS_SELECTOR, 'input[name="verificationCode"]'))
         sleep(1)
 
@@ -148,7 +148,7 @@ class InstagramLogin:
             print("[x] 2FA is enabled")
 
             while True:
-                otp = self.__input_twofa_otp()
+                otp = self.__input_otp()
                 
                 if otp:
                     break

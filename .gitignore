@@ -1,5 +1,5 @@
 venv/
 config.json
 instagramBot/__pycache__*
-userdata/backupcode/*
-userdata/cookies/*
+userdata/backupcode/*.json
+userdata/cookies/*.json
