@@ -4,14 +4,14 @@ Bot used to automate certain instagram (_web_) functions using [python](https://
 
 ## Features
 1.  #### Authentication
-    - Login via username/password.
+    - Login via username/password or saved cookies.
     - Continuously prompts for OTP in terminal if 2FA is enabled (SMS/APP) until passed.
     - Can save cookies of authenticated accounts and use them later to authenticate. *Can be changed.*
     - Turns off notification by default. *Can be changed.*
 
 2.  #### Account Activity
     - Set/update account `name`, `username`, `bio`, `website`, `email`, `phone`
-        >NOTE: When you change email address, you'll need to verify the new email with the link sent to you. Phone number cannot be changed when SMS-2FA is enabled. You either disable SMS-2FA using `disable_twofa()` method then update it or you update it using the `enable_sms_twofa()` method directly.
+        >NOTE: When you change email address, you'll need to verify the new email with the link sent to you by instagram. Phone number cannot be changed when SMS-2FA is enabled. You either disable SMS-2FA using `disable_twofa()` method then update it or you update it using the `enable_sms_twofa()` method directly.
 
     - Change password. You need the old password along side.
     - Enable SMS-2FA. Only SMS-2FA can be enabled from instagram web.
@@ -23,7 +23,7 @@ Bot used to automate certain instagram (_web_) functions using [python](https://
 
 
 ## Installation
-Just simply clone this repository.
+Just clone this repository.
 
 ```bash
 
@@ -50,6 +50,7 @@ pip install -r requirements.txt
 
 ## Usage
 >NOTE: The words webdriver and web browser are used interchangeably in this context, therefore means the same thing.
+
 From the `main.py` example below...
 
 ```python
@@ -57,7 +58,6 @@ From the `main.py` example below...
 from instagramBot.instagram_profile import InstagramProfile
 from instagramBot.instagram_login import InstagramLogin
 from instagramBot.bot import Bot
-from instagramBot import config
 
 
 with Bot(teardown=True) as bot:
@@ -65,7 +65,7 @@ with Bot(teardown=True) as bot:
     via_cookies = InstagramLogin(driver=bot).login_via_cookies()
     
     if not via_cookies:
-        InstagramLogin(driver=bot).login_via_login(username=config.SECURE["username"], password=config.SECURE["password"])
+        InstagramLogin(driver=bot).login_via_login(username="your-username", password="your-password")
 
     
     InstagramProfile(driver=bot).disable_twofa()
