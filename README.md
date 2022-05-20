@@ -88,6 +88,7 @@ this should be the same instance that opens your web browser.
 ## Classes and methods
 
 - `Bot()`
+  > NOTE: `Bot()` class uses the firefox `geckodriver` and `FIREFOX_OPTIONS` by default. To change to your prefered driver, edit the `DRIVER_PATH` in `settings.py` file and then change the webdrive inherited by the `Bot()` class and also the `options` in `super().__init__()`.
   - `open_url()`. Loads instagram url from gotten from `settings.py` file.
 
 - `InstagramLogin()`. Takes the bot instance as argument.
