@@ -1,6 +1,6 @@
 # import undetected_chromedriver as uc
-from instagramBot import settings
 from selenium import webdriver
+from . import settings
 import os
 
 
