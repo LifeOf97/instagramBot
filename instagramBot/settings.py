@@ -5,14 +5,19 @@
 
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
-import json
+from pathlib import Path
+
+
+# Base dir refers to the current directory the instagramBot is located
+# to refer to other directories within this module use "BASE_DIR / your/file/path" 
+BASE_DIR = Path.cwd()
 
 
 # Webdriver path is a flexible option to change location of drivers without having
 # to update your code, and will work on multiple machines without requiring that
 # each machine put the drivers in the same place. This used the "PATH" directory.
 # you can add your specific web driver version in the driver folder.
-DRIVER_PATH = ":drivers/" # Linux
+DRIVER_PATH = F":{BASE_DIR}/drivers/" # Linux
 
 
 # Instagram Urls
