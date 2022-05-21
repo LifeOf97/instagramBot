@@ -130,7 +130,7 @@ class InstagramOSINT:
         }
 
         if save:
-            json.dump(target_data, open(F"userdata/backupcode/{settings.LOGIN['username']}.json", "w"))
+            json.dump(target_data, open(F"/userdata/backupcode/{settings.LOGIN['username']}.json", "w"))
 
         return target_data
         
