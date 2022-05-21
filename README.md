@@ -62,7 +62,7 @@ from instagramBot.bot import Bot
 
 with Bot(teardown=True) as bot:
     bot.open_url()
-    via_cookies = InstagramLogin(driver=bot).login_via_cookies()
+    via_cookies = InstagramLogin(driver=bot).login_via_cookies(username="your-username")
     
     if not via_cookies:
         InstagramLogin(driver=bot).login_via_login(username="your-username", password="your-password")
@@ -76,10 +76,10 @@ with Bot(teardown=True) as bot:
 - The first 4 lines imports what we need from within instagramBot. 
 - `with Bot(teardown=True) as bot:` we are running an instance of the `Bot()` class from the `instagramBot.bot` module, this is required because the `Bot()` class is our web driver instance and contains method to navigate to instagram website, We've alse passed `teardown=True` to gracefully terminate the bot after execution, **default is False**.
 - `bot.open_url()` opens the webdriver and navigates to instagram website, this is where the login page is rendered.
-- `via_cookies = InstagramLogin(driver=bot).login_via_cookies()` Loads cookies if available into the current webdriver session for the username supplied in your `config.LOGIN` found in `settings.py`. If the cookies are valid then user is authenticated. This method return a boolean value.
+- `via_cookies = InstagramLogin(driver=bot).login_via_cookies()` Loads cookies of the specified username if available into the current webdriver session. If the cookies are valid/not expired then user is authenticated. Returns `True` / `False`.
 - `if not via_cookies:` if the user has no cookies or cookies could not authenticate the user.**expired cookies**
-- `InstagramLogin(driver=bot).login_via_login(username=config.SECURE["username"], password=config.SECURE["password"])` then try to login with the username/password found in `config.LOGIN` provided in `settings.py` file. More on [settings.py](#settingspy-File) later.
-- `InstagramProfile(driver=bot).disable_twofa()` take one arguement `driver=bot` which is the webdriver instance to operate on and calls the `disable_twofa()` method.
+- `InstagramLogin(driver=bot).login_via_login(username="your-username", password="your-password"`. Try to login with the username/password provided if cookies failed or is not present. Returns `True` / `False`.
+- `InstagramProfile(driver=bot).disable_twofa()`. InstagramBot() takes one arguement `driver=bot` which is the webdriver instance to operate on and calls the `disable_twofa()` method.
 
 >NOTE: `InstagramLogin`, `InstagramProfile`, and `InstagramOSINT` takes one argument `driver`, which is the webdriver instance to operate on,
 this should be the same instance that opens your web browser.
@@ -88,12 +88,19 @@ this should be the same instance that opens your web browser.
 ## Classes and methods
 
 - `Bot()`
-  > NOTE: `Bot()` class uses the firefox `geckodriver` and `FIREFOX_OPTIONS` by default. To change to your prefered driver, edit the `DRIVER_PATH` in `settings.py` file and then change the webdrive inherited by the `Bot()` class and also the `options` in `super().__init__()`.
   - `open_url()`. Loads instagram url from gotten from `settings.py` file.
 
-- `InstagramLogin()`. Takes the bot instance as argument.
+    > NOTE: `Bot()` class uses the firefox `geckodriver` and `FIREFOX_OPTIONS` by default. To change to your prefered driver, please follow the steps outlined below.
+    - Download your prefered web browser driver from [selenium drivers](https://www.selenium.dev/documentation/webdriver/getting_started/install_drivers/).
+    - Extract the driver from the downloaded folder and move/copy it to the `drivers/` directory in InstagramBot.
+    - Open the `bot.py` file and change the inherited webdriver `Bot(webdriver.YouBrowser_name)`.
+    - Also change the `options` in `super().__init__()` to your web browsers options in `settings.py` file.
+
+
+- `InstagramLogin()`. Takes the `bot` instance as argument.
   - `login_via_cookies()`. Takes 1 argument `username`.
   - `login_via_login()`. Takes 3 arguments, `username`, `password` and `save_login`.
+
 
 - `InstagramProfile()`. Takes the bot instance as argument.
   - `update_profile_email()`. Takes 1 argument `email`.
@@ -102,10 +109,10 @@ this should be the same instance that opens your web browser.
   - `update_profile_name()`. Takes 1 argument `name`.
   - `update_profile_website()`. Takes 1 argument `website`.
   - `update_profile_bio()`. Takes 1 argument `bio`.
-  - `change_password()`. Takes 3 arguments `old_password`, `new_password`, `confirm_password`.
-  - `disable_twofa()`. Take no argument.
+  - `change_password()`. Takes 3 arguments `old_password`, `new_password` and `confirm_password`.
+  - `disable_twofa()`. Takes no argument.
   - `enable_sms_twofa()`. Takes 1 argument `phone`.
-  - `get_backup_code()`. Take 1 argument `username`.
+  - `get_backup_code()`. Takes 1 argument `username`.
 
 - `InstagramOSINT()`. Takes the bot instance as argument.
   - `get_target_info()`. Takes 1 argument `save`.

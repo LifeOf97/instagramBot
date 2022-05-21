@@ -3,9 +3,13 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.common import exceptions
 from typing import Union
+from pathlib import Path
 from time import sleep
 from . import settings
 import json
+
+# Dynamic path
+BASE_DIR = Path(__file__).parent
 
 
 class InstagramOSINT:
@@ -130,7 +134,7 @@ class InstagramOSINT:
         }
 
         if save:
-            json.dump(target_data, open(F"/userdata/backupcode/{settings.LOGIN['username']}.json", "w"))
+            json.dump(target_data, open(F"{BASE_DIR}/userdata/backupcode/{settings.LOGIN['username']}.json", "w"))
 
         return target_data
         
