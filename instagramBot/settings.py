@@ -7,10 +7,9 @@ from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from pathlib import Path
 
-
-# Base dir refers to the current directory the instagramBot is located
-# to refer to other directories within this module use "BASE_DIR / your/file/path" 
-BASE_DIR = Path.cwd()
+# Base dir refers to the current directory the instagramBot module is located.
+# To refer to other directories within this module use "BASE_DIR / your/file/path" 
+BASE_DIR = Path(__file__).parent
 
 
 # Webdriver path is a flexible option to change location of drivers without having

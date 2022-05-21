@@ -59,7 +59,7 @@ class InstagramLogin:
 
     def __save_cookies(self, username: str=None) -> None:
         cookies = self.driver.get_cookies()
-        json.dump(cookies, open(F"userdata/cookies/{username}.json", "w"))
+        json.dump(cookies, open(F"/userdata/cookies/{username}.json", "w"))
     
 
     def __turn_on_notifications(self, turn_on=False) -> None:
@@ -94,7 +94,7 @@ class InstagramLogin:
         to true on the login_via_login method.
         """
         try:
-            for cookie in json.load(open(F"userdata/cookies/{username}.json", "r")):
+            for cookie in json.load(open(F"/userdata/cookies/{username}.json", "r")):
                 self.driver.add_cookie(cookie)
         except Exception as e: # no cookies available
             return False

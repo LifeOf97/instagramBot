@@ -378,7 +378,7 @@ class InstagramProfile:
             code_elem = self.driver.find_element(By.CSS_SELECTOR, 'article[class="PVkFi"] > div[class="_8hLoy"] > ul[class="U3GhF"]')
             code_lists = code_elem.find_elements(By.TAG_NAME, 'li')
             
-            with open(F"userdata/backupcode/{username}.txt", "w") as f:
+            with open(F"/userdata/backupcode/{username}.txt", "w") as f:
                 for code in code_lists:
                     f.writelines(F"{code.text}\n")
 
