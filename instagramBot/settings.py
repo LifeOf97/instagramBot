@@ -41,7 +41,7 @@ MOBILE_EMULATION = {
 # Chrome driver options.
 # visit: https://chromedriver.chromium.org/ for better understanding
 CHROME_OPTIONS = ChromeOptions()
-CHROME_OPTIONS.add_argument("--headless")
+# CHROME_OPTIONS.add_argument("--headless")
 # CHROME_OPTIONS.add_argument("--window-size=1600,900")
 
 # Firefox driver options

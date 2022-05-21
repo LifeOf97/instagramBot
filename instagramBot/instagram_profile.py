@@ -2,9 +2,13 @@ from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.common import exceptions
+from pathlib import Path
 from . import settings
 from time import sleep
 
+
+# Dynamic path
+BASE_DIR = Path(__file__).parent
 
 class InstagramProfile:
 
@@ -378,7 +382,7 @@ class InstagramProfile:
             code_elem = self.driver.find_element(By.CSS_SELECTOR, 'article[class="PVkFi"] > div[class="_8hLoy"] > ul[class="U3GhF"]')
             code_lists = code_elem.find_elements(By.TAG_NAME, 'li')
             
-            with open(F"/userdata/backupcode/{username}.txt", "w") as f:
+            with open(F"{BASE_DIR}/userdata/backupcode/{username}.txt", "w") as f:
                 for code in code_lists:
                     f.writelines(F"{code.text}\n")
 
