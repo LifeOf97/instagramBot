@@ -2,4 +2,4 @@ venv/
 instagramBot/__pycache__*
 instagramBot/userdata/backupcode/*.txt
 instagramBot/userdata/cookies/*.json
-gecko*
+*.log
