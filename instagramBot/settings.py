@@ -46,4 +46,4 @@ CHROME_OPTIONS = ChromeOptions()
 
 # Firefox driver options
 FIREFOX_OPTIONS = FirefoxOptions()
-FIREFOX_OPTIONS.add_argument("--headless")
+# FIREFOX_OPTIONS.add_argument("--headless")
