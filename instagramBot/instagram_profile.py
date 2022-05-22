@@ -280,7 +280,7 @@ class InstagramProfile:
     
     def disable_twofa(self):
         """
-        This method disables all two factor authentication method set on the account.
+        This method disables all 2FA method set on the account.
         Takes no arguments for now.
         """
         self.__navigate_to_twofa()
@@ -301,19 +301,19 @@ class InstagramProfile:
                     # click turn off button
                     self.driver.find_element(By.CSS_SELECTOR, 'button[class="aOOlW  bIiDR  "]').click()
 
-                    try:  # wait for bottom notification bar to show up
-                        self.wait.until(lambda elem: elem.find_element(By.CSS_SELECTOR, 'p[class="gxNyb"]'))
-                    except exceptions.TimeoutException:
-                        print("[!] Timeout: Disable 2fa > turn off")
-                    else:
-                        bottom_notif = self.driver.find_element(By.CSS_SELECTOR, 'p[class="gxNyb"')
+                #     try:  # wait for bottom notification bar to show up
+                #         self.wait.until(lambda elem: elem.find_element(By.CSS_SELECTOR, 'p[class="gxNyb"]'))
+                #     except exceptions.TimeoutException:
+                #         print("[!] Timeout: Disable 2fa > turn off")
+                #     else:
+                #         bottom_notif = self.driver.find_element(By.CSS_SELECTOR, 'p[class="gxNyb"')
 
-                        if "settings saved" in str(bottom_notif.text.lower()):
-                            print(F"[2FA] {label_elem.text} Turned off")
-                            return True
-                        else:
-                            print(F"[2FA]: {label_elem.text}: Error")
-                            return False
+                #         if "settings saved" in str(bottom_notif.text.lower()):
+                #             print(F"[2FA] {label_elem.text} Turned off")
+                #             return True
+                #         else:
+                #             print(F"[2FA]:  Error - {label_elem.text}")
+                #             return False
 
 
     def enable_sms_twofa(self, phone: str=None) -> None:

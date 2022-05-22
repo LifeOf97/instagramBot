@@ -11,4 +11,4 @@ with Bot() as bot:
     if not via_cookies:
         InstagramLogin(driver=bot).login_via_login(username="your-username", password="your-password")
 
-    InstagramProfile(driver=bot).get_backup_code(username="your-username")
+    InstagramProfile(driver=bot).disable_twofa()
