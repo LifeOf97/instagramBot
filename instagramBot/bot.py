@@ -4,12 +4,12 @@ from . import settings
 import os
 
 
-class Bot(webdriver.Chrome):
+class Bot(webdriver.Firefox):
 
     def __init__(self, teardown: bool=False):
         self.teardown = teardown
         os.environ["PATH"] += settings.DRIVER_PATH
-        super(Bot, self).__init__(options=settings.CHROME_OPTIONS)
+        super(Bot, self).__init__(options=settings.FIREFOX_OPTIONS)
 
     
     def __exit__(self, *args) -> None:
