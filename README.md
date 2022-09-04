@@ -88,7 +88,7 @@ this should be the same instance that opens your web browser.
 ## Classes and methods
 
 - `Bot()`
-  - `open_url()`. Loads instagram url from gotten from `settings.py` file.
+  - `open_url()`. Loads instagram url gotten from `settings.py` file.
 
     > NOTE: `Bot()` class uses the firefox `geckodriver` and `FIREFOX_OPTIONS` by default. To change to your prefered driver, please follow the steps outlined below.
     - Download your prefered web browser driver from [selenium drivers](https://www.selenium.dev/documentation/webdriver/getting_started/install_drivers/).
