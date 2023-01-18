@@ -119,4 +119,4 @@ this should be the same instance that opens your web browser.
 
 
 ## Settings.py File
-This file can be eited but with *caution*. Look at [settings.py](./instagramBot/settings.py)
+This file can be edited but with *caution*. Look at [settings.py](./instagramBot/settings.py)
